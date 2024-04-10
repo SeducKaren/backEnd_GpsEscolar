@@ -83,7 +83,7 @@ app.use("/api", indexRouter);
 
 
 const PORT = process.env.DB_PORT;
-// const PORT = 5432;
+
 app.listen(PORT, () => {
     console.log('Server rodando na porta ${PORT}');
     console.log('Server acessível em http://localhost:${PORT}');
