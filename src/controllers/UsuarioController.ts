@@ -114,17 +114,21 @@ class UsuarioController {
     };
 
     static async getUsuarioById (req: Request, res: Response): Promise<void>{
-        const usuarioId = req.params.id;
+        const usuarioId = parseInt(req.params.id);
+        if (isNaN(usuarioId)) {
+            res.status(400).json({ message: "ID de usuario inválido" });
+            return;
+        }
 
         try {
-            const usuario = await UsuarioModel.findById(usuarioId);
+            const usuario = await UsuarioModel.findById(usuarioId.toString());
             if (usuario){
                 res.status(200).json(usuario);
             } else {
-                res.status(404).json({ message: "Aluno não encontrado"});
+                res.status(404).json({ message: "Usuário não encontrado"});
             }
         } catch (error) {
-            console.error('Error ao buscar usurário:', error);
+            console.error('Error ao buscar usuário:', error);
             res.status(500).json({ message: 'Internal server error'});
         }
     
