@@ -55,15 +55,15 @@ app.use((req: ExtendedRequest, res: Response, next: NextFunction) => {
   });
 
 // testando uma rota GET em escolas do banco de dados
-// app.get('/escolas', async (req: ExtendedRequest, res: Response) => {
-//     try {
-//         const result = await pool.query('SELECT * FROM escola');
-//         res.status(200).json(result.rows);
+//  app.get('/escolas', async (req: ExtendedRequest, res: Response) => {
+//      try {
+//          const result = await pool.query('SELECT * FROM escola');
+//          res.status(200).json(result.rows);
 //     } catch (error) {
-//         console.error("Erro ao buscar escolas", error);
-//         res.status(500).json({ error: "Erro interno no servidor" });
-//     }
-// });
+//          console.error("Erro ao buscar escolas", error);
+//          res.status(500).json({ error: "Erro interno no servidor" });
+//    }
+//  });
 // testando uma rota GET em escolas do banco de dados
 // app.get('/usuario', async (req: ExtendedRequest, res: Response) => {
 //     try {
@@ -81,9 +81,7 @@ app.use("/api", indexRouter);
 
 // app.use('/escola', escolaRoutes);
 
-
 const PORT = process.env.DB_PORT;
-
 app.listen(PORT, () => {
     console.log('Server rodando na porta ${PORT}');
     console.log('Server acessível em http://localhost:${PORT}');
