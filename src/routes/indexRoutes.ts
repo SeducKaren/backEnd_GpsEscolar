@@ -6,6 +6,7 @@ import loginRoutes from './loginRoutes';
 import paradaRoutes from './paradaRoutes';
 import paradaRota06Routes from './paradaRota06Routes';
 import paradaRota08Routes from './paradaRota08Routes';
+import paradaRota12Routes from './paradaRota12Routes';
 
 const indexRouter = express.Router();
 
@@ -16,5 +17,6 @@ indexRouter.use('/login', loginRoutes);
 indexRouter.use('/parada', paradaRoutes);
 indexRouter.use('/rota06', paradaRota06Routes);
 indexRouter.use('/rota08', paradaRota08Routes);
+indexRouter.use('/rota12', paradaRota12Routes);
 
 export default indexRouter;

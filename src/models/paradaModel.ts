@@ -77,5 +77,22 @@ class ParadaModel {
         );
         return result.rows[0] ? new ParadaModel(result.rows[0]) : undefined;
     }
+
+    static async findAllRota12(): Promise<ParadaModel[]> {
+      const result = await this.pool.query(`SELECT * FROM rota12`);
+      return result.rows.map((data: any) => new ParadaModel(data));
+    }
+    static async findByIdRota12(id: string): Promise<ParadaModel | undefined> {
+      const result = await this.pool.query(
+        `
+        SELECT * 
+        FROM rota12
+        WHERE id_parada = $1
+        `,
+        [id]
+      );
+      return result.rows[0] ? new ParadaModel(result.rows[0]) : undefined;
+  }
+
   }
 export default ParadaModel;
