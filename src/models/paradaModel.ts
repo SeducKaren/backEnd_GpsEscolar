@@ -94,5 +94,37 @@ class ParadaModel {
       return result.rows[0] ? new ParadaModel(result.rows[0]) : undefined;
   }
 
+  static async findAllRota17(): Promise<ParadaModel[]> {
+    const result = await this.pool.query(`SELECT * FROM rota17`);
+    return result.rows.map((data: any) => new ParadaModel(data));
+  }
+  static async findByIdRota17(id: string): Promise<ParadaModel | undefined> {
+    const result = await this.pool.query(
+      `
+      SELECT * 
+      FROM rota17
+      WHERE id_parada = $1
+      `,
+      [id]
+    );
+    return result.rows[0] ? new ParadaModel(result.rows[0]) : undefined;
+}
+
+static async findAllRota27(): Promise<ParadaModel[]> {
+  const result = await this.pool.query(`SELECT * FROM rota27`);
+  return result.rows.map((data: any) => new ParadaModel(data));
+}
+static async findByIdRota27(id: string): Promise<ParadaModel | undefined> {
+  const result = await this.pool.query(
+    `
+    SELECT * 
+    FROM rota27
+    WHERE id_parada = $1
+    `,
+    [id]
+  );
+  return result.rows[0] ? new ParadaModel(result.rows[0]) : undefined;
+}
+
   }
 export default ParadaModel;
