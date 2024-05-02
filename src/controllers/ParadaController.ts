@@ -213,6 +213,7 @@ class ParadaController {
             res.status(500).json({ message: 'Erro interno do servidor' });
         }
     }
+    
     static async getAllParadasRota06volta(req: Request, res: Response): Promise<void> {
         try {
             const paradas = await ParadaModel.findAllRota06volta();
@@ -233,6 +234,96 @@ class ParadaController {
     
         try {
             const parada = await ParadaModel.findByIdRota06volta(paradaId.toString());
+            if (parada) {
+                res.status(200).json(parada);
+            } else {
+                res.status(404).json({ message: "Parada não encontrada" });
+            }
+        } catch (error) {
+            console.error('Erro ao buscar parada:', error);
+            res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+    }
+    static async getAllParadasRota12(req: Request, res: Response): Promise<void> {
+        try {
+            const paradas = await ParadaModel.findAllRota12();
+            res.status(200).json(paradas);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Internal server error"});
+        }
+    }
+
+
+    static async getParadaByIdRota12(req: Request, res: Response): Promise<void> {
+        const paradaId = parseInt(req.params.id);
+        if (isNaN(paradaId)) {
+            res.status(400).json({ message: "ID da parada inválido" });
+            return;
+        }
+    
+        try {
+            const parada = await ParadaModel.findByIdRota12(paradaId.toString());
+            if (parada) {
+                res.status(200).json(parada);
+            } else {
+                res.status(404).json({ message: "Parada não encontrada" });
+            }
+        } catch (error) {
+            console.error('Erro ao buscar parada:', error);
+            res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+    }
+    static async getAllParadasRota17(req: Request, res: Response): Promise<void> {
+        try {
+            const paradas = await ParadaModel.findAllRota17();
+            res.status(200).json(paradas);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Internal server error"});
+        }
+    }
+
+
+    static async getParadaByIdRota17(req: Request, res: Response): Promise<void> {
+        const paradaId = parseInt(req.params.id);
+        if (isNaN(paradaId)) {
+            res.status(400).json({ message: "ID da parada inválido" });
+            return;
+        }
+    
+        try {
+            const parada = await ParadaModel.findByIdRota17(paradaId.toString());
+            if (parada) {
+                res.status(200).json(parada);
+            } else {
+                res.status(404).json({ message: "Parada não encontrada" });
+            }
+        } catch (error) {
+            console.error('Erro ao buscar parada:', error);
+            res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+    }
+    static async getAllParadasRota27(req: Request, res: Response): Promise<void> {
+        try {
+            const paradas = await ParadaModel.findAllRota27();
+            res.status(200).json(paradas);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Internal server error"});
+        }
+    }
+
+
+    static async getParadaByIdRota27(req: Request, res: Response): Promise<void> {
+        const paradaId = parseInt(req.params.id);
+        if (isNaN(paradaId)) {
+            res.status(400).json({ message: "ID da parada inválido" });
+            return;
+        }
+    
+        try {
+            const parada = await ParadaModel.findByIdRota27(paradaId.toString());
             if (parada) {
                 res.status(200).json(parada);
             } else {
