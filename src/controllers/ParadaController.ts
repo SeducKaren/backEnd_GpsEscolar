@@ -334,5 +334,15 @@ class ParadaController {
             res.status(500).json({ message: 'Erro interno do servidor' });
         }
     }
+
+    static async getAllParadasTodasRotas(req: Request, res: Response): Promise<void> {
+        try {
+            const paradas = await ParadaModel.findAllParadasTodasRotas();
+            res.status(200).json(paradas);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Internal server error" });
+        }
+    }
 }
 export default ParadaController;

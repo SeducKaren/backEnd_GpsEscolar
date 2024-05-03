@@ -14,6 +14,7 @@ import paradaRota08Ida from './paradaRota08IdaRoutes';
 import paradaRota12 from './paradaRota12Routes';
 import paradaRota17 from './paradaRota17Routes';
 import paradaRota27 from './paradaRota27Routes';
+import allParadas from './allParadasRoutes'
 
 
 const indexRouter = express.Router();
@@ -33,5 +34,6 @@ indexRouter.use('/rota08ida', paradaRota08Ida);
 indexRouter.use('/rota12', paradaRota12);
 indexRouter.use('/rota17', paradaRota17);
 indexRouter.use('/rota27', paradaRota27);
+indexRouter.use('/allParadas', allParadas);
 
 export default indexRouter;

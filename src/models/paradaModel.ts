@@ -207,5 +207,23 @@ class ParadaModel {
         );
         return result.rows[0] ? new ParadaModel(result.rows[0]) : undefined;
        }
+
+       static async findAllParadasTodasRotas(): Promise<ParadaModel[]> {
+        try {
+            const rotas = ['rota04ida', 'rota04volta', 'rota05ida', 'rota05volta', 'rota06', 'rota06volta', 'rota08', 'rota09ida', 'rota10ida', 'rota10volta', 'rota11ida', 'rota11volta', 'rota12', 'rota17', 'rota27'];
+            let allParadas: ParadaModel[] = [];
+
+            for (const rota of rotas) {
+                const result = await this.pool.query(`SELECT * FROM ${rota}`);
+                const paradas = result.rows.map((data: any) => new ParadaModel(data));
+                allParadas = allParadas.concat(paradas);
+            }
+
+            return allParadas;
+        } catch (error) {
+            console.error(error);
+            throw new Error("Erro ao buscar paradas de todas as rotas.");
+        }
+    }
   }
 export default ParadaModel;
