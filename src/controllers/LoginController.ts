@@ -5,13 +5,13 @@ class LoginController {
 
 
     static async authLogin(req: Request, res: Response): Promise<void> {
-        const { login, password } = req.body;
+        const { email, password } = req.body;
         
         try {
-            const user = await LoginModel.findByLogin(login);
+            const user = await LoginModel.findByLogin(email);
             
             if (user) {
-                const isPasswordCorrect = await LoginModel.verifyPassword(login, password);
+                const isPasswordCorrect = await LoginModel.verifyPassword(email, password);
 
                 if (isPasswordCorrect === true) {
                     res.status(200).json({ message: 'Login realizado com sucesso' });
