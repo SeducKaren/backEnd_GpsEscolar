@@ -69,7 +69,7 @@ class LoginModel {
     
         constructor(data: any) {
             this.login = data.login || undefined;
-            this.password = data.senha || undefined;
+            this.password = data.password || undefined;
         }
         
         static async getAll(): Promise<LoginModel[]> {
