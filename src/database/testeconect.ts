@@ -12,24 +12,24 @@ async function testConnection() {
   }
 }
 
-async function testSelect() {
-    try {
-      const client = await pool.connect();
+// async function testSelect() {
+//     try {
+//       const client = await pool.connect();
   
-      // Fazendo o SELECT na tabela 'escola'
-      const result = await client.query('SELECT * FROM escola');
+//       // Fazendo o SELECT na tabela 'escola'
+//       const result = await client.query('SELECT * FROM escola');
   
-      console.log('Resultado do SELECT:', result.rows);
+//       console.log('Resultado do SELECT:', result.rows);
   
-      client.release(); // Release the client back to the pool
-    } catch (error) {
-      console.error('Erro ao executar o SELECT:', error);
-    } finally {
-      pool.end(); // Close all connections in the pool
-    }
-  }
+//       client.release(); // Release the client back to the pool
+//     } catch (error) {
+//       console.error('Erro ao executar o SELECT:', error);
+//     } finally {
+//       pool.end(); // Close all connections in the pool
+//     }
+//   }
   
-  testSelect();
+  //testSelect();
 
 testConnection();
 

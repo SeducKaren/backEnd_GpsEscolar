@@ -6,10 +6,10 @@ import LoginModel from "../models/loginModel";
 
 //     static async authLogin(req: Request, res: Response): Promise<void> {
 //         const { email, password } = req.body;
-        
+
 //         try {
 //             const user = await LoginModel.findByLogin(email);
-            
+
 //             if (user) {
 //                 const isPasswordCorrect = await LoginModel.verifyPassword(email, password);
 
@@ -33,15 +33,18 @@ import LoginModel from "../models/loginModel";
 class LoginController {
     static async authLogin(req: Request, res: Response): Promise<void> {
         const { email, password } = req.body;
-        
+
         try {
             const user = await LoginModel.findByLogin(email);
-            
+
             if (user) {
                 const isPasswordCorrect = await LoginModel.verifyPassword(email, password);
 
                 if (isPasswordCorrect === true) {
-                    res.status(200).json({ message: 'Login realizado com sucesso' });
+                    res.status(200).json({
+                        message: 'Login realizado com sucesso',
+                        user: user
+                    });
                 } else {
                     res.status(401).json({ message: 'Senha incorreta' });
                 }
