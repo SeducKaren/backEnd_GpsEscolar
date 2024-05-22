@@ -56,7 +56,8 @@ class EscolaModel {
             rejectUnauthorized: false,
         },
         // connectionString: process.env.DATABASE_URL || "postgres://postgres:bancogps@banco-gps.cnomqqwy21eq.sa-east-1.rds.amazonaws.com/db_gps",
-        connectionString: process.env.DATABASE_URL || "postgres://postgres:bancogps@banco-gps.cxg6s0ekwvkc.us-east-1.rds.amazonaws.com:5432/db_gps",
+        // connectionString: process.env.DATABASE_URL || "postgres://postgres:bancogps@banco-gps.cxg6s0ekwvkc.us-east-1.rds.amazonaws.com:5432/db_gps",
+        connectionString: process.env.DATABASE_URL ,
         // connectionString: "postgres://postgres:bancogps@banco-gps.cxg6s0ekwvkc.us-east-1.rds.amazonaws.com",
         
     });

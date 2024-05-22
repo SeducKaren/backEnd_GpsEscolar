@@ -54,6 +54,18 @@ app.use((req: ExtendedRequest, res: Response, next: NextFunction) => {
       .send("*** Erro Interno no Servidor! Por favor Verifique seu Servidor ***");
   });
 
+
+  app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Permitir solicitações de todas as origens (mude '*' para sua origem específica em produção)
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Permitir o cabeçalho Content-Type
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(200); // Responder imediatamente às requisições OPTIONS
+    } else {
+      next(); // Passar a requisição para o próximo middleware
+    }
+  });
+
 // testando uma rota GET em escolas do banco de dados
 //  app.get('/escolas', async (req: ExtendedRequest, res: Response) => {
 //      try {

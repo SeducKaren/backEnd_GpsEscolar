@@ -65,11 +65,11 @@ class LoginModel {
 
     
     login: string;
-    senha: string;
+    password: string;
     
         constructor(data: any) {
             this.login = data.login || undefined;
-            this.senha = data.senha || undefined;
+            this.password = data.password || undefined;
         }
         
         static async getAll(): Promise<LoginModel[]> {
@@ -93,7 +93,7 @@ class LoginModel {
         //             }
         //         }
 
-        static async verifyPassword(login: string, senha: string): Promise<boolean | Error> {
+        static async verifyPassword(login: string, password: string): Promise<boolean | Error> {
             try {
                 const result = await this.pool.query('SELECT senha_usuario FROM usuario WHERE email_usuario = $1', [login]);
                 
@@ -104,7 +104,7 @@ class LoginModel {
                 const senhaUsuario = result.rows[0].senha_usuario;
                 
                 // Comparação da senha fornecida com a senha armazenada no banco de dados
-                if (senha === senhaUsuario) {
+                if (password === senhaUsuario) {
                     return true;
                 } else {
                     return new Error('Senha incorreta');
