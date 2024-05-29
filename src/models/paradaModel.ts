@@ -13,21 +13,11 @@ class ParadaModel {
         connectionString: process.env.DATABASE_URL
     });
 
-    // id_parada: string;
-    // nome_parada: string;
-    // latitude_parada: string;
-    // longitude_parada: string;
     id_parada: string;
     nome_parada: string;
     latitude_parada: number;
     longitude_parada: number;
 
-    // constructor(data:any){
-    //     this.id_parada = data.id_parada || undefined;
-    //     this.nome_parada = data.nome_parada || undefined;
-    //     this.latitude_parada = data.latitude_parada || undefined;
-    //     this.longitude_parada = data.longitude_parada || undefined;
-    // }
     constructor(data:any){
         this.id_parada = data.id_parada || undefined;
         this.nome_parada = data.nome_parada || undefined;
@@ -40,10 +30,6 @@ class ParadaModel {
         return result.rows.map((data:any) => new ParadaModel(data));
     }
 
-    // static async findById(id:string): Promise<ParadaModel | undefined> {
-    //     const result = await this.pool.query('Select * from parada Where id_parada = $1', [id]);
-    //     return result.rows[0] ? new ParadaModel(result.rows[0]) : undefined;
-    // }
     static async findById(id: string): Promise<ParadaModel | undefined> {
         const result = await this.pool.query(
           `
