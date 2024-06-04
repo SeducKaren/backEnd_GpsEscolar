@@ -14,6 +14,7 @@ class LoginController {
                     res.status(200).json({ 
                         message: 'Login realizado com sucesso', 
                         user: {
+                            id_usuario: user.id_usuario,
                             nome_usuario: user.nome_usuario,
                             latitude_parada_favorita1: user.latitude_parada_favorita1,
                             longitude_parada_favorita1: user.longitude_parada_favorita1,

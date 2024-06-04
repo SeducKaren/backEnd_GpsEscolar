@@ -87,11 +87,7 @@ app.use((req: ExtendedRequest, res: Response, next: NextFunction) => {
 //     }
 // });
 
-// rotas
 app.use("/api", indexRouter);
-// app.use('/users', usuarioRoutes);
-
-// app.use('/escola', escolaRoutes);
 
 const PORT = process.env.DB_PORT;
 app.listen(PORT, () => {

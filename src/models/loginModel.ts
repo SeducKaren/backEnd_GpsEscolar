@@ -16,6 +16,7 @@ class LoginModel {
     
     login: string;
     password: string;
+    id_usuario: string;
     nome_usuario: string;
     latitude_parada_favorita1: number;
     longitude_parada_favorita1: number;
@@ -27,6 +28,7 @@ class LoginModel {
         constructor(data: any) {
             this.login = data.login || undefined;
             this.password = data.password || undefined;
+            this.id_usuario = data.id_usuario || undefined;
             this.nome_usuario = data.nome_usuario || undefined;
             this.latitude_parada_favorita1 = parseFloat(data.latitude_parada_favorita1);
             this.longitude_parada_favorita1 = parseFloat(data.longitude_parada_favorita1);
@@ -49,7 +51,7 @@ class LoginModel {
 
         static async findByLogin(login: string): Promise<LoginModel> {
             const result = await this.pool.query(
-                'SELECT nome_usuario, latitude_parada_favorita1, longitude_parada_favorita1, latitude_parada_favorita2, longitude_parada_favorita2, contatoemergencia1_usuario, contatoemergencia2_usuario FROM usuario3 WHERE email_usuario = $1', 
+                'SELECT id_usuario, nome_usuario, latitude_parada_favorita1, longitude_parada_favorita1, latitude_parada_favorita2, longitude_parada_favorita2, contatoemergencia1_usuario, contatoemergencia2_usuario FROM usuario3 WHERE email_usuario = $1', 
                 [login]
             );
             return result.rows.map((data: any) => new LoginModel(data))[0];
